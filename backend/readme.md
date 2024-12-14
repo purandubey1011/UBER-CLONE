@@ -27,7 +27,7 @@ Example:
 }
 
 Example response:
-
+```json
 {
     "token": "JWT_TOKEN_HERE",
     "user": {
