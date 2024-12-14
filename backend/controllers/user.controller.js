@@ -9,7 +9,6 @@ module.exports.registerUser = async(req,res,next)=>{
     }
 
     let {fullname,email,password} = req.body
-    console.log(req.body)
 
     let hashPassword = await userModel.hashPassword(password)
 

@@ -26,11 +26,18 @@ Example:
     "password": "password123"
 }
 
-### example response :
-The request body should be a JSON object with the following fields:
+Example response:
 
-- `fullname.firstname` (string, required): The first name of the user. Must be at least 3 characters long.
-- `fullname.lastname` (string, required): The last name of the user. Must be at least 3 characters long.
-- `email` (string, required): The email address of the user. Must be a valid email format and at least 5 characters long.
-- `password` (string, required): The password for the user. Must be at least 6 characters long.
-- `token` (string): jwt token.
+{
+    "token": "JWT_TOKEN_HERE",
+    "user": {
+        "_id": "USER_ID_HERE",
+        "fullname": {
+            "firstname": "John",
+            "lastname": "Doe"
+        },
+        "email": "john.doe@example.com",
+        "password":"hashpassword"
+    }
+}
+
