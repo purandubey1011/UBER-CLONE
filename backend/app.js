@@ -1,13 +1,14 @@
-let env = require('dotenv')
-env.config()
-let express = require('express')
-let cors = require('cors')
-let app = express()
+let env = require("dotenv");
+env.config();
+let express = require("express");
+let cors = require("cors");
+let app = express();
 
-app.use(cors())
+app.use(cors());
 
-app.get('/',(req,res)=>{
-    res.send('hello world')
-})
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-module.exports = app 
+app.use("/users", require("./routes/user.routes.js"));
+
+module.exports = app;
