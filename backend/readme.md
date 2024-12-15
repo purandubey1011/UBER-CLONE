@@ -1,21 +1,38 @@
-# User Registration Endpoint
+# User Authentication API Documentation
 
-## Endpoint: `/users/register`
+This documentation provides details about the `/users/register` and `/users/login` endpoints for managing user authentication.
 
-### Method: POST
+---
 
-### Description:
-This endpoint is used to register a new user. It validates the input data, hashes the user's password, and stores the user in the database. Upon successful registration, it returns a JSON Web Token (JWT) and the user data.
+## **Endpoints Overview**
+1. `/users/register` - Registers a new user and returns a JWT token.
+2. `/users/login` - Authenticates an existing user and returns a JWT token.
 
-### Request Body:
-The request body should be a JSON object with the following fields:
+---
 
-- `fullname.firstname` (string, required): The first name of the user. Must be at least 3 characters long.
-- `fullname.lastname` (string, required): The last name of the user. Must be at least 3 characters long.
-- `email` (string, required): The email address of the user. Must be a valid email format and at least 5 characters long.
-- `password` (string, required): The password for the user. Must be at least 6 characters long.
+## **1. User Registration**
 
-Example:
+### **Endpoint**: `/users/register`
+### **Method**: `POST`
+
+### **Description**:
+This endpoint is used to register a new user. It validates the input data, securely hashes the user's password, and stores the information in the database. Upon success, it generates a JWT token and returns user data.
+
+---
+
+### **Request Specifications**
+
+#### **Request Body**:
+| Field               | Type   | Requirement             | Description                            |
+|---------------------|--------|-------------------------|----------------------------------------|
+| `fullname.firstname` | string | Required (min: 3 chars) | First name of the user                |
+| `fullname.lastname`  | string | Required (min: 3 chars) | Last name of the user                 |
+| `email`             | string | Required (min: 5 chars) | Valid email address of the user       |
+| `password`          | string | Required (min: 6 chars) | Secure password for the user's account|
+
+---
+
+#### **Example Request**:
 ```json
 {
     "fullname": {
@@ -25,19 +42,3 @@ Example:
     "email": "john.doe@example.com",
     "password": "password123"
 }
-
-Example response:
-
-{
-    "token": "JWT_TOKEN_HERE",
-    "user": {
-        "_id": "USER_ID_HERE",
-        "fullname": {
-            "firstname": "John",
-            "lastname": "Doe"
-        },
-        "email": "john.doe@example.com",
-        "password":"hashpassword"
-    }
-}
-
